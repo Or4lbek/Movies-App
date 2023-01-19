@@ -7,20 +7,22 @@ import androidx.navigation.compose.composable
 import com.example.moviesapp.screens.MainScreen
 import com.example.moviesapp.screens.SplashScreen
 import com.example.moviesapp.utils.Constants
+import com.example.moviesapp.viewmodels.MainViewModel
 
 @Composable
 fun SetupNavHost(
-    navController: NavHostController
+    navController: NavHostController,
+    viewModel: MainViewModel
 ) {
     NavHost(
         navController = navController,
         startDestination = Screen.Splash.route
     ) {
         composable(route = Screen.Splash.route) {
-            SplashScreen(navController = navController)
+            SplashScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = Screen.Main.route) {
-            MainScreen()
+            MainScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = Screen.Detail.route) {
 

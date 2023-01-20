@@ -2,10 +2,12 @@ package com.example.moviesapp.screens
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
@@ -16,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.moviesapp.Screen
+import com.example.moviesapp.utils.backgroundColor
 import com.example.moviesapp.viewmodels.MainViewModel
 import kotlinx.coroutines.delay
 
@@ -35,6 +38,7 @@ fun SplashScreen(
         startAnimate = true
         viewModel.getAllMovies()
         delay(4000)
+        navController.popBackStack()
         navController.navigate(Screen.Main.route)
     }
     Splash(alpha = alphaAnimation.value)
@@ -45,7 +49,9 @@ fun Splash(
     alpha: Float
 ) {
     Box(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colors.backgroundColor),
         contentAlignment = Alignment.Center,
     ) {
         Icon(
@@ -54,7 +60,7 @@ fun Splash(
                 .alpha(alpha),
             imageVector = Icons.Default.PlayArrow,
             contentDescription = "icon",
-            tint = Color.Black
+            tint = Color.White
         )
     }
 }

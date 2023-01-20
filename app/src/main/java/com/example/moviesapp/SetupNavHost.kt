@@ -23,11 +23,13 @@ fun SetupNavHost(
             SplashScreen(navController = navController, viewModel = viewModel)
         }
         composable(route = Screen.Main.route) {
-            MainScreen(navController = navController, viewModel = viewModel)
+            MainScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
         }
-        composable(route = Screen.Detail.route + "/{Id}") {backStackEntry ->
+        composable(route = Screen.Detail.route + "/{Id}") { backStackEntry ->
             DetailScreen(
-                navController =  navController,
                 viewModel = viewModel,
                 itemId = backStackEntry.arguments?.getString("Id") ?: "1"
             )
